@@ -41,13 +41,14 @@ class Collection(models.Model):
 
 class Product(models.Model):
     title = models.CharField(max_length=75)
+    slug = models.SlugField()
     description = models.TextField()
     unit_price = models.DecimalField(max_digits=6, decimal_places=2)
     inventory = models.IntegerField()
     last_update = models.DateTimeField(auto_now=True)
     collection = models.ForeignKey(Collection, on_delete=models.PROTECT)
     promotion = models.ManyToManyField(Promotion)
-    slug = models.SlugField()
+    
 
     def __str__(self):
         return self.title
@@ -68,7 +69,7 @@ class Order(models.Model):
         max_length=1, choices=STATUS_CHOICES, default=STATUS_PENDING
     )
     customer = models.ForeignKey(Customer, on_delete=models.PROTECT)
-
+    
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.PROTECT)
