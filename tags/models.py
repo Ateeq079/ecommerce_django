@@ -6,7 +6,8 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 
 class Tag(models.Model):
     title = models.CharField( max_length=255)
-
+    def __str__(self):
+        return self.title
 class TaggedItem(models.Model):
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)

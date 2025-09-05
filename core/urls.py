@@ -22,4 +22,6 @@ admin.site.site_header = 'Ecommerce Admin Panel'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('store/',include("store.urls")),
+
 ] + debug_toolbar_urls()
