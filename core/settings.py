@@ -90,7 +90,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": os.getenv("DB_NAME", "ecommerce"),
         "USER": os.getenv("DB_USER", "admin"),
-        "PASSWORD": os.getenv("DB_PASSWORD", "postgres@123"),
+        "PASSWORD": os.getenv("DB_PASSWORD", "yourpassword"),
         "HOST": os.getenv("DB_HOST", "127.0.0.1"),  # default localhost
         "PORT": os.getenv("DB_PORT", "5432"),
     }
@@ -139,4 +139,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 REST_FRAMEWORK = {
     "COERCE_DECIMAL_TO_STRING": False,
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10
 }
