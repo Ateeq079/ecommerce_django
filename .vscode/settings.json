@@ -1,6 +1,7 @@
 {
     "sqltools.connections": [
         {
+            "ssh": "Disabled",
             "previewLimit": 50,
             "server": "localhost",
             "port": 5432,
@@ -8,7 +9,7 @@
             "name": "ecommerce",
             "database": "ecommerce",
             "username": "admin",
-            "password": "postgres@123"
+            "password": "yourpassword"
         }
     ]
 }
