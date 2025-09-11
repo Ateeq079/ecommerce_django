@@ -31,7 +31,7 @@ class Customer(models.Model):
 class Collection(models.Model):
     title = models.CharField(max_length=50)
     featured_product = models.ForeignKey(
-        "Product", on_delete=models.SET_NULL, null=True, related_name="+"
+        "Product", on_delete=models.SET_NULL, null=True, blank=True, related_name="+"
     )
     def __str__(self):
         return self.title
@@ -46,7 +46,7 @@ class Product(models.Model):
     unit_price = models.DecimalField(max_digits=6, decimal_places=2, validators=[MinValueValidator(1)])
     inventory = models.IntegerField(validators=[MinValueValidator(1)])
     last_update = models.DateTimeField(auto_now=True)
-    collection = models.ForeignKey(Collection, on_delete=models.PROTECT)
+    collection = models.ForeignKey(Collection, on_delete=models.PROTECT, related_name="products")
     promotion = models.ManyToManyField(Promotion, blank=True)
     
 
@@ -93,3 +93,10 @@ class Address(models.Model):
     city = models.CharField(max_length=150)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     zip_code = models.CharField(max_length=50)
+
+class ReviewModel(models.Model):
+    product = models.ForeignKey(Product,  on_delete=models.CASCADE, related_name='reviews')
+    name = models.CharField( max_length=50)
+    description = models.TextField()
+    date_created = models.DateField( auto_now_add=True)
+    
