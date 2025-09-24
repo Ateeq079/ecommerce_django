@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Product, Collection , OrderItem, ReviewModel
-from .serializers import ProductSerializer, CollectionSerializer, ReviewSerializer
+from .models import Product, Collection , OrderItem, ReviewModel , Cart
+from .serializers import ProductSerializer, CollectionSerializer, ReviewSerializer, CartSerializer
 from django.db.models import Count
 from rest_framework.viewsets import ModelViewSet
 from django_filters.rest_framework import DjangoFilterBackend
@@ -46,3 +46,6 @@ class ReviewViewSet(ModelViewSet):
         return ReviewModel.objects.filter(product_id=self.kwargs['product_pk'])
     def get_serializer_context(self):
         return {'product_id': self.kwargs['product_pk']}
+class CartView(ModelViewSet):
+    serializer_class = CartSerializer
+    queryset = Cart.objects.all()
