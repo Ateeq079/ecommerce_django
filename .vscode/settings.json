@@ -8,8 +8,8 @@
             "driver": "PostgreSQL",
             "name": "ecommerce",
             "database": "ecommerce",
-            "username": "admin",
-            "password": "yourpassword"
+            "username": "postgres",
+            "password": "hjh7867"
         }
     ]
 }
